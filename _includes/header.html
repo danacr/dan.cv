@@ -1,28 +1,35 @@
-
 <!-- Intro Start -->
 
 <header class="intro">
   <div class="intro-body">
     <div class="container">
       <div class="row">
-          <div class="col-md-10 col-md-offset-1">
-            <h1 class="brand-heading">&nbsp;</h1>
-            <h1 class="brand-heading">&nbsp;</h1>
-            <span class="intro-text">{{ content }}</span>
-            <h5>&nbsp;</h5>
-            <a href="#{{ site.pages_list['About'] }}" class="page-scroll">
-            </a>
-           </div>
-        </div>
         <div class="col-md-10 col-md-offset-1">
-       
-          <div class="row">
-           
-         {% include social-buttons.html %} </div>
-         
+          <h1 class="brand-heading">&nbsp;</h1>
+          <h1 class="brand-heading">&nbsp;</h1>
+          <span class="intro-text">{{ content }}</span>
+          <h5>&nbsp;</h5>
+          <a href="#{{ site.pages_list['About'] }}" class="page-scroll">
+          </a>
+        </div>
+      </div>
+      <div class="col-md-10 col-md-offset-1">
+        <div class="row">
+          {% include social-buttons.html %}
+        </div>
+        <div class="row">
+          <br>
+          <br>
+          <br>
+          <p><a href="https://serialport.org/servers/cobalt/cobalt-raq-3/"><img src="{{site.baseurl}}/img/cobalt.gif"
+                alt="cobalt raq3 image" width="40%"></a></p>
+          <a href="https://serialport.org/servers/cobalt/cobalt-raq-3/" class="container content-section text-center"
+            style="font-size: 1em;">Proudly running on a Cobalt RaQ 3</a>
+        </div>
+      </div>
+
+    </div>
   </div>
-  </div>
-</div>
 </header>
 
 <!-- Intro End -->
