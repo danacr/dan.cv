@@ -1,10 +1,15 @@
-```shell
+```bash
 Forked from https://github.com/le4ker/personal-jekyll-theme
 ```
 
 ## How to run:
-```shell
+```bash
 docker compose up web 
+```
+
+## Test ftp upload:
+```bash
+docker build --build-arg FTP_USER="USER" --build-arg FTP_PASS="PASS" --build-arg FTP_HOST="HOST" -f ftp.Dockerfile 
 ```
 
 ## OSS used in { Personal }
