@@ -32,10 +32,4 @@ RUN apk add --no-cache wget
 
 COPY --from=build /usr/src/app/public/ /usr/src/app/public/
 
-RUN cd /usr/src/app/public/ && wget \
-  --continue \
-  --mirror --recursive --level=inf --timestamping --no-remove-listing \
-  --no-host-directories \
-  --ftp-user=$FTP_USER \
-  --ftp-password=$FTP_PASS \
-    ftp://$FTP_HOST/web/
+RUN cd /usr/src/app/public/ && wget --continue --mirror --recursive --level=inf --timestamping --no-remove-listing --no-host-directories --ftp-user=$FTP_USER --ftp-password=$FTP_PASS ftp://$FTP_HOST/web/
