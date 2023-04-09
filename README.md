@@ -1,13 +1,16 @@
+# dan.cv
 ```bash
 Forked from https://github.com/le4ker/personal-jekyll-theme
 ```
 
-## How to run:
+Personal landing page, cloudflare dns settings are [here](https://github.com/danacr/dns).
+
+How to run:
 ```bash
 docker compose up web 
 ```
 
-## Test ftp upload:
+Test ftp upload:
 ```bash
 docker build --build-arg FTP_USER="USER" --build-arg FTP_PASS="PASS" --build-arg FTP_HOST="HOST" -f ftp.Dockerfile 
 ```
