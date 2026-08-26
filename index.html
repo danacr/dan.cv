@@ -52,7 +52,18 @@
     </div>
   </div></div></header>
   <script>
-    const messages=["Hello, how are you?","Can I help you?"],output=document.querySelector(".intro-text");let message=Math.floor(Math.random()*messages.length),position=0,deleting=false;
+    const messages=[
+      "Hello, how are you?",
+      "Can I help you?",
+      "Welcome to my corner of the internet.",
+      "Curiosity keeps the lights blinking.",
+      "Building useful things, one idea at a time.",
+      "Still running. Still learning.",
+      "Powered by code and questionable amounts of coffee.",
+      "Somewhere, a Cobalt RaQ 3 is humming.",
+      "The web was more fun when servers were blue.",
+      "Thanks for stopping by."
+    ],output=document.querySelector(".intro-text");let message=Math.floor(Math.random()*messages.length),position=0,deleting=false;
     function type(){const text=messages[message];position+=deleting?-1:1;output.textContent=text.slice(0,position);if(!deleting&&position===text.length){deleting=true;setTimeout(type,5000)}else if(deleting&&position===0){deleting=false;message=(message+1)%messages.length;setTimeout(type,200)}else setTimeout(type,10)}
     setTimeout(type,200);
   </script>
