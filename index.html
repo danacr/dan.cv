@@ -23,8 +23,11 @@
     .archive-menu summary::-webkit-details-marker{display:none}.archive-menu summary:hover,.archive-menu[open] summary{background:#222}
     .archive-menu-panel{position:absolute;top:50px;right:0;width:min(390px,calc(100vw - 30px));max-height:calc(100vh - 90px);overflow:auto;padding:10px 0;border:1px solid #333;border-radius:6px;background:#111;box-shadow:0 8px 30px rgba(0,0,0,.8)}
     .archive-menu-panel h2{margin:8px 18px 10px;color:#fff;font:700 13px Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;letter-spacing:1px;text-transform:uppercase}
-    .archive-menu-panel a{display:block;padding:9px 18px;color:#ccc;font:400 13px/1.35 Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;text-transform:none;text-shadow:none}
-    .archive-menu-panel a:hover,.archive-menu-panel a:focus{color:#00cdff;background:#222}
+    .archive-menu-panel a,.archive-menu-panel button{display:block;width:100%;padding:9px 18px;border:0;color:#ccc;background:transparent;font:400 13px/1.35 Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;text-align:left;text-transform:none;text-shadow:none}
+    .archive-menu-panel a:hover,.archive-menu-panel a:focus,.archive-menu-panel button:hover,.archive-menu-panel button:focus{color:#00cdff;background:#222;outline:0}
+    .video-viewer{position:fixed;inset:0;z-index:2000;display:flex;align-items:center;justify-content:center;padding:20px;background:rgba(0,0,0,.92)}
+    .video-viewer[hidden]{display:none}.video-viewer-inner{position:relative;width:min(1100px,100%)}.video-viewer h2{margin:0 45px 16px 0;font:700 18px Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif}
+    .video-viewer video{display:block;width:100%;max-height:80vh;background:#000}.video-close{position:absolute;top:-8px;right:0;border:0;background:transparent;color:#fff;font-size:32px;line-height:1}.video-close:hover{color:#00cdff}
     .intro{display:table;width:100%;height:100%;padding:100px 0;text-align:center;color:#fff;background:#000}.intro-body{display:table-cell;vertical-align:middle}
     .brand-heading{margin:0 0 35px;font:700 40px Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;letter-spacing:1px;text-transform:uppercase}
     .intro-text{font-size:18px;text-shadow:1px 0 1px #000}.social-buttons{margin-top:67px;margin-bottom:0}
@@ -44,19 +47,26 @@
       <summary aria-label="Open archive"><i class="fa fa-bars" aria-hidden="true"></i></summary>
       <div class="archive-menu-panel">
         <h2>Archive</h2>
-        <a href="https://media.githubusercontent.com/media/danacr/dan.cv/main/archive/research-and-development.html">Welcome to Research &amp; Development</a>
-        <a href="https://media.githubusercontent.com/media/danacr/dan.cv/main/archive/lockchain.html">Lockchain</a>
-        <a href="https://media.githubusercontent.com/media/danacr/dan.cv/main/archive/grex-decentralized-hive-mind.pdf">Grex: A Decentralized Hive Mind <i class="fa fa-file-pdf-o" aria-hidden="true"></i></a>
-        <a href="https://media.githubusercontent.com/media/danacr/dan.cv/main/archive/google-cloud-zurich-chaos-engineering-kubernetes.mp4">Chaos Engineering on Kubernetes <i class="fa fa-play-circle" aria-hidden="true"></i></a>
-        <a href="https://media.githubusercontent.com/media/danacr/dan.cv/main/archive/zurich-go-kubernetes-operators.mp4">Kubernetes Operators <i class="fa fa-play-circle" aria-hidden="true"></i></a>
-        <a href="https://media.githubusercontent.com/media/danacr/dan.cv/main/archive/kubernetes-fun-way-k3s.mp4">Kubernetes the Fun Way: K3s <i class="fa fa-play-circle" aria-hidden="true"></i></a>
-        <a href="https://media.githubusercontent.com/media/danacr/dan.cv/main/archive/zurich-go-build-game.mp4">Let's Build a Game with Go <i class="fa fa-play-circle" aria-hidden="true"></i></a>
-        <a href="https://media.githubusercontent.com/media/danacr/dan.cv/main/archive/ecosystems-swarm-robotics-ev-access.mp4">Ecosystems, Swarm Robotics &amp; EV Access <i class="fa fa-play-circle" aria-hidden="true"></i></a>
-        <a href="https://media.githubusercontent.com/media/danacr/dan.cv/main/archive/kryha-internet-of-agreements-space.mp4">Internet of Agreements: Space <i class="fa fa-play-circle" aria-hidden="true"></i></a>
-        <a href="https://media.githubusercontent.com/media/danacr/dan.cv/main/archive/edgecase-2025-aftermovie.mp4">Edgecase 2025 Aftermovie <i class="fa fa-play-circle" aria-hidden="true"></i></a>
+        <button class="view-html" data-src="https://media.githubusercontent.com/media/danacr/dan.cv/main/archive/research-and-development.html">Welcome to Research &amp; Development</button>
+        <button class="view-html" data-src="https://media.githubusercontent.com/media/danacr/dan.cv/main/archive/lockchain.html">Lockchain</button>
+        <a href="https://docs.google.com/gview?embedded=1&amp;url=https%3A%2F%2Fmedia.githubusercontent.com%2Fmedia%2Fdanacr%2Fdan.cv%2Fmain%2Farchive%2Fgrex-decentralized-hive-mind.pdf" target="_blank" rel="noopener">Grex: A Decentralized Hive Mind <i class="fa fa-file-pdf-o" aria-hidden="true"></i></a>
+        <button class="play-video" data-title="Chaos Engineering on Kubernetes" data-src="https://media.githubusercontent.com/media/danacr/dan.cv/main/archive/google-cloud-zurich-chaos-engineering-kubernetes.mp4">Chaos Engineering on Kubernetes <i class="fa fa-play-circle" aria-hidden="true"></i></button>
+        <button class="play-video" data-title="Kubernetes Operators" data-src="https://media.githubusercontent.com/media/danacr/dan.cv/main/archive/zurich-go-kubernetes-operators.mp4">Kubernetes Operators <i class="fa fa-play-circle" aria-hidden="true"></i></button>
+        <button class="play-video" data-title="Kubernetes the Fun Way: K3s" data-src="https://media.githubusercontent.com/media/danacr/dan.cv/main/archive/kubernetes-fun-way-k3s.mp4">Kubernetes the Fun Way: K3s <i class="fa fa-play-circle" aria-hidden="true"></i></button>
+        <button class="play-video" data-title="Let's Build a Game with Go" data-src="https://media.githubusercontent.com/media/danacr/dan.cv/main/archive/zurich-go-build-game.mp4">Let's Build a Game with Go <i class="fa fa-play-circle" aria-hidden="true"></i></button>
+        <button class="play-video" data-title="Ecosystems, Swarm Robotics &amp; EV Access" data-src="https://media.githubusercontent.com/media/danacr/dan.cv/main/archive/ecosystems-swarm-robotics-ev-access.mp4">Ecosystems, Swarm Robotics &amp; EV Access <i class="fa fa-play-circle" aria-hidden="true"></i></button>
+        <button class="play-video" data-title="Internet of Agreements: Space" data-src="https://media.githubusercontent.com/media/danacr/dan.cv/main/archive/kryha-internet-of-agreements-space.mp4">Internet of Agreements: Space <i class="fa fa-play-circle" aria-hidden="true"></i></button>
+        <button class="play-video" data-title="Edgecase 2025 Aftermovie" data-src="https://media.githubusercontent.com/media/danacr/dan.cv/main/archive/edgecase-2025-aftermovie.mp4">Edgecase 2025 Aftermovie <i class="fa fa-play-circle" aria-hidden="true"></i></button>
       </div>
     </details>
   </nav>
+  <div class="video-viewer" role="dialog" aria-modal="true" aria-labelledby="video-title" hidden>
+    <div class="video-viewer-inner">
+      <button class="video-close" type="button" aria-label="Close video">&times;</button>
+      <h2 id="video-title"></h2>
+      <video controls playsinline preload="metadata"></video>
+    </div>
+  </div>
   <header class="intro"><div class="intro-body"><div class="container">
     <div class="row"><div class="col-md-10 col-md-offset-1">
       <h1 class="brand-heading">&nbsp;</h1><h1 class="brand-heading">&nbsp;</h1>
@@ -90,6 +100,34 @@
     ],output=document.querySelector(".intro-text");let message=Math.floor(Math.random()*messages.length),position=0,deleting=false;
     function type(){const text=messages[message];position+=deleting?-1:1;output.textContent=text.slice(0,position);if(!deleting&&position===text.length){deleting=true;setTimeout(type,5000)}else if(deleting&&position===0){deleting=false;message=(message+1)%messages.length;setTimeout(type,200)}else setTimeout(type,10)}
     setTimeout(type,200);
+
+    const viewer=document.querySelector(".video-viewer"),video=viewer.querySelector("video"),videoTitle=document.querySelector("#video-title"),archiveMenu=document.querySelector(".archive-menu");
+    function closeVideo(){video.pause();video.removeAttribute("src");video.load();viewer.hidden=true;document.body.style.overflow=""}
+    document.querySelectorAll(".play-video").forEach(button=>button.addEventListener("click",()=>{videoTitle.textContent=button.dataset.title;video.src=button.dataset.src;viewer.hidden=false;archiveMenu.open=false;document.body.style.overflow="hidden";video.play().catch(()=>{})}));
+    document.querySelectorAll(".view-html").forEach(button=>button.addEventListener("click",async()=>{
+      const tab=window.open("","_blank");
+      if(!tab)return;
+      tab.document.write("<title>Loading archive…</title><p style='font-family:sans-serif'>Loading archive…</p>");
+      archiveMenu.open=false;
+      try{
+        const response=await fetch(button.dataset.src);
+        if(!response.ok)throw new Error(`HTTP ${response.status}`);
+        let html=await response.text();
+        html=html.replace(/<script\b[^>]*>[\s\S]*?<\/script>/gi,"");
+        const base=`<base href="${button.dataset.src.replace(/[^/]+$/,"")}">`;
+        html=/<head[\s>]/i.test(html)?html.replace(/<head([^>]*)>/i,`<head$1>${base}`):base+html;
+        const url=URL.createObjectURL(new Blob([html],{type:"text/html"}));
+        tab.location.replace(url);
+        setTimeout(()=>URL.revokeObjectURL(url),300000);
+      }catch(error){
+        tab.document.open();
+        tab.document.write(`<title>Archive error</title><p style="font-family:sans-serif">Could not load this archive: ${error.message}</p>`);
+        tab.document.close();
+      }
+    }));
+    document.querySelector(".video-close").addEventListener("click",closeVideo);
+    viewer.addEventListener("click",event=>{if(event.target===viewer)closeVideo()});
+    document.addEventListener("keydown",event=>{if(event.key==="Escape"&&!viewer.hidden)closeVideo()});
   </script>
 </body>
 </html>
