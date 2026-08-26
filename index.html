@@ -1,9 +1,60 @@
----
-layout: index
-section-type: index
-sitemap:
-  priority: 1.0
----
-<!--
-If you want to have a static message in your intro layout, disable the dynamic-typing in the _config.yml and write here your text
--->
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Welcome">
+  <meta name="author" content="Dan Acristinii">
+  <meta name="keywords" content="dan, acristinii, personal, resume, cv">
+  <title>Dan Acristinii</title>
+  <link rel="canonical" href="https://www.dan.cv/">
+  <link rel="icon" href="img/favicon.ico">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,700">
+  <style>
+    html,body{width:100%;height:100%}body{margin:0;color:#fff;background:#000;font-family:"Lora","Helvetica Neue",Helvetica,Arial,sans-serif;-webkit-tap-highlight-color:rgba(255,255,255,.2)}
+    a{color:#00cdff;transition:all .2s ease-in-out}a:hover,a:focus{color:#008fab;text-decoration:none}
+    .navbar-custom{margin-bottom:0;border-bottom:1px solid rgba(255,255,255,.3);text-transform:uppercase;font-family:Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;background:#000}
+    .navbar-custom .navbar-brand{font-weight:700}.navbar-custom a{color:#fff;text-shadow:0 0 2px rgba(0,0,0,.8)}.navbar-brand img{display:inline}
+    .intro{display:table;width:100%;height:100%;padding:100px 0;text-align:center;color:#fff;background:#000}.intro-body{display:table-cell;vertical-align:middle}
+    .brand-heading{margin:0 0 35px;font:700 40px Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;letter-spacing:1px;text-transform:uppercase}
+    .intro-text{font-size:18px;text-shadow:1px 0 1px #000}.social-buttons{margin-top:67px;margin-bottom:0}
+    ul.social-buttons li a{display:block;width:40px;height:40px;border-radius:100%;color:#00cdff;background:#222;font-size:20px;line-height:40px;outline:0;transition:all .3s}
+    ul.social-buttons li a:hover,ul.social-buttons li a:focus,ul.social-buttons li a:active{color:#222;background:#00a4cc}
+    .cobalt-row{margin-top:75px}.cobalt-row p{margin:0 0 35px;font-size:20px;line-height:1.6}.cobalt-row img{width:40%}
+    .cobalt-link{display:inline-block;margin-top:26px;padding-top:0;font-size:1em;text-align:center}
+    .typed-cursor{font-size:16px;vertical-align:top;animation:blink .7s infinite}@keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
+    @media(min-width:768px){.navbar-custom{padding:20px 0;border-bottom:0;background:transparent;letter-spacing:1px}.intro{height:100%;padding:0}.brand-heading{font-size:100px}.intro-text{font-size:26px}.typed-cursor{font-size:22px}}
+  </style>
+</head>
+<body id="page-top">
+  <nav class="navbar navbar-custom navbar-fixed-top" aria-label="Main navigation"><div class="container"><div class="navbar-header">
+    <a class="navbar-brand" href="#page-top"><img src="img/black-lab-glass.ico" alt=""> Dan Acristinii</a>
+  </div></div></nav>
+  <header class="intro"><div class="intro-body"><div class="container">
+    <div class="row"><div class="col-md-10 col-md-offset-1">
+      <h1 class="brand-heading">&nbsp;</h1><h1 class="brand-heading">&nbsp;</h1>
+      <span class="intro-text"></span><span class="typed-cursor">|</span><h5>&nbsp;</h5>
+    </div></div>
+    <div class="col-md-10 col-md-offset-1">
+      <div class="row"><ul class="list-inline social-buttons">
+        <li><a href="https://www.linkedin.com/in/danacr/" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fa fa-linkedin fa-fw"></i></a></li>
+        <li><a href="https://medium.com/@danacr" target="_blank" rel="noopener" aria-label="Medium"><i class="fa fa-medium fa-fw"></i></a></li>
+        <li><a href="https://github.com/danacr" target="_blank" rel="noopener" aria-label="GitHub"><i class="fa fa-github fa-fw"></i></a></li>
+        <li><a href="https://twitter.com/danacristinii" target="_blank" rel="noopener" aria-label="Twitter"><i class="fa fa-twitter fa-fw"></i></a></li>
+      </ul></div>
+      <div class="row cobalt-row">
+        <p><a href="https://serialport.org/servers/cobalt/cobalt-raq-3/"><img src="img/cobalt.gif" alt="Cobalt RaQ 3"></a></p>
+        <a href="https://serialport.org/servers/cobalt/cobalt-raq-3/" class="cobalt-link">Proudly running on a Cobalt RaQ 3</a>
+      </div>
+    </div>
+  </div></div></header>
+  <script>
+    const messages=["Hello, how are you?","Can I help you?"],output=document.querySelector(".intro-text");let message=Math.floor(Math.random()*messages.length),position=0,deleting=false;
+    function type(){const text=messages[message];position+=deleting?-1:1;output.textContent=text.slice(0,position);if(!deleting&&position===text.length){deleting=true;setTimeout(type,5000)}else if(deleting&&position===0){deleting=false;message=(message+1)%messages.length;setTimeout(type,200)}else setTimeout(type,10)}
+    setTimeout(type,200);
+  </script>
+</body>
+</html>
