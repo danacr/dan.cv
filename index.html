@@ -48,7 +48,7 @@
       <div class="archive-menu-panel">
         <h2>Archive</h2>
         <button class="view-html" data-src="https://media.githubusercontent.com/media/danacr/dan.cv/main/archive/research-and-development.html">Welcome to Research &amp; Development</button>
-        <button class="view-html" data-src="https://media.githubusercontent.com/media/danacr/dan.cv/main/archive/lockchain.html">Lockchain</button>
+        <button class="view-html" data-src="https://media.githubusercontent.com/media/danacr/dan.cv/main/archive/lockchain.html" data-version="dee45cedf355be1">Lockchain</button>
         <a href="https://docs.google.com/gview?embedded=1&amp;url=https%3A%2F%2Fmedia.githubusercontent.com%2Fmedia%2Fdanacr%2Fdan.cv%2Fmain%2Farchive%2Fgrex-decentralized-hive-mind.pdf" target="_blank" rel="noopener">Grex: A Decentralized Hive Mind <i class="fa fa-file-pdf-o" aria-hidden="true"></i></a>
         <button class="play-video" data-title="Chaos Engineering on Kubernetes" data-src="https://media.githubusercontent.com/media/danacr/dan.cv/main/archive/google-cloud-zurich-chaos-engineering-kubernetes.mp4">Chaos Engineering on Kubernetes <i class="fa fa-play-circle" aria-hidden="true"></i></button>
         <button class="play-video" data-title="Kubernetes Operators" data-src="https://media.githubusercontent.com/media/danacr/dan.cv/main/archive/zurich-go-kubernetes-operators.mp4">Kubernetes Operators <i class="fa fa-play-circle" aria-hidden="true"></i></button>
@@ -104,27 +104,37 @@
     const viewer=document.querySelector(".video-viewer"),video=viewer.querySelector("video"),videoTitle=document.querySelector("#video-title"),archiveMenu=document.querySelector(".archive-menu");
     function closeVideo(){video.pause();video.removeAttribute("src");video.load();viewer.hidden=true;document.body.style.overflow=""}
     document.querySelectorAll(".play-video").forEach(button=>button.addEventListener("click",()=>{videoTitle.textContent=button.dataset.title;video.src=button.dataset.src;viewer.hidden=false;archiveMenu.open=false;document.body.style.overflow="hidden";video.play().catch(()=>{})}));
-    document.querySelectorAll(".view-html").forEach(button=>button.addEventListener("click",async()=>{
-      const tab=window.open("","_blank");
+    async function viewHtml(button,tab=window.open("","_blank")){
       if(!tab)return;
-      tab.document.write("<title>Loading archive…</title><p style='font-family:sans-serif'>Loading archive…</p>");
+      const isCurrentTab=tab===window;
+      if(!isCurrentTab)tab.document.write("<title>Loading archive…</title><p style='font-family:sans-serif'>Loading archive…</p>");
       archiveMenu.open=false;
       try{
-        const response=await fetch(button.dataset.src);
+        const source=new URL(button.dataset.src);
+        if(button.dataset.version)source.searchParams.set("v",button.dataset.version);
+        const response=await fetch(source);
         if(!response.ok)throw new Error(`HTTP ${response.status}`);
         let html=await response.text();
         html=html.replace(/<script\b[^>]*>[\s\S]*?<\/script>/gi,"");
-        const base=`<base href="${button.dataset.src.replace(/[^/]+$/,"")}">`;
+        html=html.replace(/href=(["'])lockchain\.html\1/gi,`href=$1${location.origin}${location.pathname}?archive=lockchain$1`);
+        const base=`<base href="${source.href.replace(/[^/]+(?:\?.*)?$/,"")}">`;
         html=/<head[\s>]/i.test(html)?html.replace(/<head([^>]*)>/i,`<head$1>${base}`):base+html;
         const url=URL.createObjectURL(new Blob([html],{type:"text/html"}));
         tab.location.replace(url);
         setTimeout(()=>URL.revokeObjectURL(url),300000);
       }catch(error){
+        if(isCurrentTab)return alert(`Could not load this archive: ${error.message}`);
         tab.document.open();
         tab.document.write(`<title>Archive error</title><p style="font-family:sans-serif">Could not load this archive: ${error.message}</p>`);
         tab.document.close();
       }
-    }));
+    }
+    document.querySelectorAll(".view-html").forEach(button=>button.addEventListener("click",()=>viewHtml(button)));
+    const requestedArchive=new URLSearchParams(location.search).get("archive");
+    if(requestedArchive){
+      const button=[...document.querySelectorAll(".view-html")].find(item=>item.dataset.src.endsWith(`/archive/${requestedArchive}.html`));
+      if(button)viewHtml(button,window);
+    }
     document.querySelector(".video-close").addEventListener("click",closeVideo);
     viewer.addEventListener("click",event=>{if(event.target===viewer)closeVideo()});
     document.addEventListener("keydown",event=>{if(event.key==="Escape"&&!viewer.hidden)closeVideo()});
