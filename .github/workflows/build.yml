@@ -11,8 +11,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v6
-        with:
-          lfs: true
+      - name: Download deployed image assets
+        run: git lfs pull --include="img/**" --exclude="archive/**"
       - name: Install FTP client
         run: |
           sudo apt-get update
