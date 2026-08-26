@@ -2,7 +2,7 @@
 
 Static personal landing page for [www.dan.cv](https://www.dan.cv).
 
-The site has no backend, framework, package manager, or build step. The page is contained in `index.html` and is deployed to GitHub Pages by `.github/workflows/build.yml` whenever a commit is pushed to `main`.
+The site has no backend, framework, or package manager. The page is contained in `index.html` and is uploaded to the web host over FTP by `.github/workflows/build.yml` whenever a commit is pushed to `main`.
 
 ## Local preview
 
@@ -22,6 +22,6 @@ Then visit [http://localhost:8000](http://localhost:8000).
 - `img/` — favicon, navigation icon, and Cobalt banner
 - `CNAME` — custom domain configuration
 - `.gitattributes` — Git LFS rules for image assets
-- `.github/workflows/build.yml` — GitHub Pages deployment
+- `.github/workflows/build.yml` — static-site FTP deployment workflow
 
-PNG, JPEG, GIF, and WebP images are tracked with Git LFS. The deployment workflow fetches their full contents before publishing the site.
+PNG, JPEG, GIF, and WebP images are tracked with Git LFS. The deployment workflow fetches their full contents before uploading the site.
