@@ -22,4 +22,4 @@ jobs:
           FTP_USER: ${{ secrets.FTP_USER }}
           FTP_PASS: ${{ secrets.FTP_PASS }}
           FTP_HOST: ${{ secrets.FTP_HOST }}
-        run: ncftpput -R -v -z -u "$FTP_USER" -p "$FTP_PASS" "$FTP_HOST" /web/ index.html img
+        run: ncftpput -R -v -z -u "$FTP_USER" -p "$FTP_PASS" "$FTP_HOST" /web/ index.html robots.txt sitemap.xml img
