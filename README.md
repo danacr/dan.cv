@@ -2,7 +2,7 @@
 
 Static personal landing page for [www.dan.cv](https://www.dan.cv), including a read-only archive of public Twitter posts.
 
-The site has no backend, framework, or package manager. The page is contained in `index.html` and is uploaded with its manifest and the public `img/` and processed `twitter-feed/` folders to the web host over FTP by `.github/workflows/build.yml` whenever a commit is pushed to `main`. The workflow resolves deployed Git LFS assets before connecting to the server.
+The site has no backend, framework, or package manager. The page is contained in `index.html` and is published with its manifest and the public `img/` and processed `twitter-feed/` folders by `.github/workflows/build.yml` whenever a commit is pushed to `main`. The workflow resolves deployed Git LFS assets, builds a clean `public-site/` payload, and mirrors it to `/web/` over FTP. Files no longer present in that payload are removed from the server.
 
 Image assets and everything under `archive/` are stored with Git LFS. The deployment workflow downloads the site images and public tweet media, then uploads the landing page and its public assets; archived files are never sent to the FTP server. The archive menu streams videos from Git LFS, renders archived HTML client-side, and opens the PDF through Google Docs Viewer.
 

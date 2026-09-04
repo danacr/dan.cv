@@ -13,15 +13,19 @@ jobs:
         uses: actions/checkout@v6
       - name: Download deployed image assets
         run: git lfs pull --include="img/**,twitter-feed/**" --exclude="archive/**"
+      - name: Prepare public site
+        run: |
+          mkdir -p public-site
+          cp index.html robots.txt sitemap.xml site.webmanifest .htaccess public-site/
+          cp -R img twitter-feed public-site/
+          find public-site -name .DS_Store -delete
       - name: Install FTP client
         run: |
           sudo apt-get update
-          sudo apt-get install --yes ncftp
-      - name: Upload static site
+          sudo apt-get install --yes lftp
+      - name: Synchronize static site
         env:
           FTP_USER: ${{ secrets.FTP_USER }}
           FTP_PASS: ${{ secrets.FTP_PASS }}
           FTP_HOST: ${{ secrets.FTP_HOST }}
-        run: |
-          ncftpput -v -z -u "$FTP_USER" -p "$FTP_PASS" "$FTP_HOST" /web/ index.html robots.txt sitemap.xml site.webmanifest
-          ncftpput -R -v -z -u "$FTP_USER" -p "$FTP_PASS" "$FTP_HOST" /web/ img twitter-feed
+        run: lftp -u "$FTP_USER","$FTP_PASS" "$FTP_HOST" -e "set ftp:ssl-allow no; mirror --reverse --delete --verbose --parallel=2 --transfer-all public-site /web; quit"
