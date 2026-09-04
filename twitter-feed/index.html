@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="The public Twitter archive of Dan Acristinii.">
+  <meta name="robots" content="index,follow">
+  <meta name="theme-color" content="#090b0f">
+  <title>Twitter Archive | Dan Acristinii</title>
+  <link rel="canonical" href="https://www.dan.cv/twitter-feed/">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root{--ink:#090b0f;--panel:#0e1117;--line:rgba(255,255,255,.1);--muted:#89909d;--white:#f4f6f8;--acid:#b9ff66;--cyan:#5ae4ff;--max:780px}
+    *{box-sizing:border-box}
+    html{max-width:100%;overflow-x:hidden;color-scheme:dark}
+    body{width:100%;max-width:100%;margin:0;color:var(--white);background:var(--ink);font-family:Manrope,sans-serif;overflow-x:hidden}
+    a{color:inherit;text-decoration:none}
+    button{font:inherit}
+    img,video{max-width:100%}
+    .shell{width:min(var(--max),calc(100% - 40px));margin:auto}
+    .noise{position:fixed;inset:0;z-index:20;pointer-events:none;opacity:.035;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+    .topbar{position:sticky;z-index:10;top:0;border-bottom:1px solid var(--line);background:rgba(9,11,15,.9);backdrop-filter:blur(16px)}
+    .topbar-inner{height:72px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+    .back,.archive-label,.post-date,.load-more{font:500 11px "DM Mono",monospace;letter-spacing:.08em;text-transform:uppercase}
+    .back{color:var(--muted);transition:.2s}.back:hover{color:var(--acid)}
+    .archive-label{color:var(--acid)}
+    header{padding:76px 0 48px;border-bottom:1px solid var(--line)}
+    .eyebrow{display:flex;align-items:center;gap:12px;margin-bottom:19px;color:var(--acid);font:500 11px "DM Mono",monospace;letter-spacing:.12em;text-transform:uppercase}
+    .eyebrow:before{content:"";width:32px;height:1px;background:currentColor}
+    h1{margin:0;font-size:clamp(48px,10vw,82px);font-weight:600;line-height:.95;letter-spacing:-.06em}
+    .feed{border-inline:1px solid var(--line)}
+    .post{display:grid;grid-template-columns:49px minmax(0,1fr);gap:13px;padding:24px;border-bottom:1px solid var(--line);background:linear-gradient(120deg,rgba(255,255,255,.018),transparent 55%);transition:.2s}
+    .post:hover{background:rgba(255,255,255,.028)}
+    .post-avatar{display:block;width:49px;height:49px;border-radius:50%;object-fit:cover;background:var(--panel)}
+    .post-body{min-width:0}
+    .post-meta{display:flex;align-items:baseline;min-width:0;gap:6px;font-size:14px;line-height:1.35}
+    .post-name{font-weight:700}.post-handle,.dot{color:var(--muted)}
+    .post-date{margin-left:auto;color:var(--muted);font-size:9px;white-space:nowrap}.post-date:hover{color:var(--acid)}
+    .post-text{margin:6px 0 0;white-space:pre-wrap;overflow-wrap:anywhere;font-size:16px;line-height:1.58}
+    .post-text a{color:var(--cyan);text-decoration:underline;text-decoration-color:rgba(90,228,255,.3);text-underline-offset:3px}.post-text a:hover{color:var(--acid)}
+    .media{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:3px;margin-top:18px;border:1px solid var(--line);border-radius:13px;overflow:hidden;background:var(--panel)}
+    .media.single{grid-template-columns:1fr}.media img,.media video{display:block;width:100%;height:100%;max-height:520px;object-fit:cover;background:#050607}.media video{min-height:220px}
+    .engagement{display:flex;flex-wrap:wrap;align-items:center;gap:10px 20px;margin-top:19px;color:var(--muted);font:500 11px "DM Mono",monospace;letter-spacing:.04em;text-transform:uppercase}
+    .engagement a{margin-left:auto;color:var(--cyan);transition:color .2s}.engagement a:hover{color:var(--acid)}
+    .load-wrap{padding:32px;text-align:center}.load-more{min-height:42px;padding:0 19px;border:1px solid var(--line);border-radius:99px;color:var(--white);background:transparent;cursor:pointer;transition:.2s}.load-more:hover{border-color:var(--acid);color:var(--acid)}.load-more[hidden]{display:none}
+    @media(max-width:520px){.shell{width:calc(100% - 20px)}.topbar-inner{height:64px}header{padding:54px 0 36px}h1{font-size:clamp(43px,15vw,62px)}.post{grid-template-columns:42px minmax(0,1fr);gap:10px;padding:19px 14px}.post-avatar{width:42px;height:42px}.post-meta{flex-wrap:wrap}.post-date{width:100%;margin:2px 0 0}.post-text{font-size:15px}.media{grid-template-columns:1fr}.media img,.media video{max-height:430px}.media video{min-height:190px}}
+    @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important}}
+  </style>
+</head>
+<body>
+  <div class="noise"></div>
+  <nav class="topbar"><div class="shell topbar-inner"><a class="back" href="../">← dan.cv</a><span class="archive-label">Archive</span></div></nav>
+  <header><div class="shell"><div class="eyebrow">Public posts · 2008–2023</div><h1>Twitter archive</h1></div></header>
+  <main class="shell"><div class="feed" id="feed" aria-live="polite"></div><div class="load-wrap"><button class="load-more" id="load-more" type="button" hidden>Load more</button></div></main>
+  <script src="data/posts.js"></script>
+  <script>
+    (()=>{
+      const PAGE_SIZE=30;
+      const posts=window.PUBLIC_TWITTER_POSTS||[];
+      const feed=document.querySelector("#feed");
+      const loadMore=document.querySelector("#load-more");
+      let rendered=0;
+
+      function displayText(post){
+        let value=post.text||"";
+        (post.mediaUrls||[]).forEach(url=>{value=value.replaceAll(url,"")});
+        (post.urls||[]).forEach(item=>{if(item.short)value=value.replaceAll(item.short,item.expanded||item.short)});
+        return value.trim();
+      }
+
+      function appendLinkedText(target,value){
+        const pattern=/(https?:\/\/[^\s]+|@[A-Za-z0-9_]{1,15}|#[\p{L}\p{N}_]+)/gu;
+        let cursor=0;
+        for(const match of value.matchAll(pattern)){
+          target.append(document.createTextNode(value.slice(cursor,match.index)));
+          const link=document.createElement("a");
+          if(match[0].startsWith("@"))link.href=`https://x.com/${match[0].slice(1)}`;
+          else if(match[0].startsWith("#"))link.href=`https://x.com/hashtag/${encodeURIComponent(match[0].slice(1))}`;
+          else link.href=match[0];
+          link.target="_blank";link.rel="noopener noreferrer";link.textContent=match[0];
+          target.append(link);cursor=match.index+match[0].length;
+        }
+        target.append(document.createTextNode(value.slice(cursor)));
+      }
+
+      function renderPost(post){
+        const article=document.createElement("article");article.className="post";
+        const avatar=document.createElement("img");avatar.className="post-avatar";avatar.src="images/15162824-B5OtKepC.jpg";avatar.alt="";avatar.loading="lazy";
+        const body=document.createElement("div");body.className="post-body";
+        const meta=document.createElement("div");meta.className="post-meta";
+        const name=document.createElement("span");name.className="post-name";name.textContent="Dan Acristinii";
+        const handle=document.createElement("span");handle.className="post-handle";handle.textContent="@danacristinii";
+        const dot=document.createElement("span");dot.className="dot";dot.textContent="·";
+        const date=document.createElement("a");date.className="post-date";date.href=`https://x.com/danacristinii/status/${post.id}`;date.target="_blank";date.rel="noopener noreferrer";
+        const created=new Date(post.createdAt);date.textContent=new Intl.DateTimeFormat("en-GB",{day:"numeric",month:"short",year:"numeric"}).format(created);
+        meta.append(name,handle,dot,date);body.append(meta);
+        const text=document.createElement("p");text.className="post-text";appendLinkedText(text,displayText(post));body.append(text);
+
+        if(post.media?.length){
+          const media=document.createElement("div");media.className=`media${post.media.length===1?" single":""}`;
+          post.media.forEach(item=>{
+            const element=document.createElement(item.type==="video"?"video":"img");element.src=`data/media/${item.file}`;
+            if(item.type==="video"){element.controls=true;element.preload="metadata";element.playsInline=true}else{element.loading="lazy";element.alt="Media attached to this post"}
+            media.append(element);
+          });
+          body.append(media);
+        }
+
+        const engagement=document.createElement("div");engagement.className="engagement";
+        if(post.repostCount){const repost=document.createElement("span");repost.textContent=`${post.repostCount} repost${post.repostCount===1?"":"s"}`;engagement.append(repost)}
+        if(post.likeCount){const like=document.createElement("span");like.textContent=`${post.likeCount} like${post.likeCount===1?"":"s"}`;engagement.append(like)}
+        const original=document.createElement("a");original.href=`https://x.com/danacristinii/status/${post.id}`;original.target="_blank";original.rel="noopener noreferrer";original.textContent="View post ↗";engagement.append(original);body.append(engagement);
+        article.append(avatar,body);return article;
+      }
+
+      function renderNext(){
+        const fragment=document.createDocumentFragment();
+        posts.slice(rendered,rendered+PAGE_SIZE).forEach(post=>fragment.append(renderPost(post)));
+        feed.append(fragment);rendered=Math.min(rendered+PAGE_SIZE,posts.length);loadMore.hidden=rendered>=posts.length;
+      }
+
+      renderNext();loadMore.addEventListener("click",renderNext);
+    })();
+  </script>
+</body>
+</html>

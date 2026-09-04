@@ -12,7 +12,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v6
       - name: Download deployed image assets
-        run: git lfs pull --include="img/**" --exclude="archive/**"
+        run: git lfs pull --include="img/**,twitter-feed/data/media/**,twitter-feed/images/**" --exclude="archive/**"
       - name: Install FTP client
         run: |
           sudo apt-get update
@@ -22,4 +22,4 @@ jobs:
           FTP_USER: ${{ secrets.FTP_USER }}
           FTP_PASS: ${{ secrets.FTP_PASS }}
           FTP_HOST: ${{ secrets.FTP_HOST }}
-        run: ncftpput -R -v -z -u "$FTP_USER" -p "$FTP_PASS" "$FTP_HOST" /web/ index.html robots.txt sitemap.xml img
+        run: ncftpput -R -v -z -u "$FTP_USER" -p "$FTP_PASS" "$FTP_HOST" /web/ index.html robots.txt sitemap.xml img twitter-feed
